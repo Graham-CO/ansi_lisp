@@ -1,0 +1,1699 @@
+
+CL-USER>
+1
+1
+
+CL-USER>
+; ret 5
+; No value
+CL-USER>
+(+ 2 3)
+5
+
+CL-USER>
+;; Loading c:\Users\grw40\code\lispCode\ANSI_commonLisp\basics.lisp
+
+;; Done loading c:\Users\grw40\code\lispCode\ANSI_commonLisp\basics.lisp
+CL-USER>
+(+ 2 3 4 5)
+14
+
+CL-USER>
+(+ 2 3 4)
+9
+
+CL-USER>
+(+ 2 3)
+5
+
+CL-USER>
+(+ 2)
+2
+
+CL-USER>
+(+)
+0
+
+CL-USER>
+(/ (- 7 1) (- 4 2))
+3
+
+CL-USER>
+Artichoke
+Artichoke
+Artichoke
+CL-USER>
+CL-USER>
+Artichoke
+CL-USER>
+(myj 3 "Sons")
+; in: MYJ 3
+;     (MYJ 3 "Sons")
+;
+; caught STYLE-WARNING:
+;   undefined function: COMMON-LISP-USER::MYJ
+;
+; compilation unit finished
+;   Undefined function:
+;     MYJ
+;   caught 1 STYLE-WARNING condition
+
+(cons 'a '(b c d))
+(A B C D)
+
+CL-USER>
+(cons 'a '(b c d))
+(A B C D)
+
+CL-USER>
+(defun askem (string)
+    (format T "~A" string)
+    (read))
+ASKEM
+
+CL-USER>
+(askem "how u doin?")
+how u doin?
+GOOD
+
+CL-USER>
+(defun ask-number ()
+    (format t "Please enter a number. ")
+    (let ((val (read)))
+      (if (numberp val)
+            val
+            (ask-number))))
+ASK-NUMBER
+
+CL-USER>
+(ask-number)
+Please enter a number.
+Please enter a number.
+Please enter a number.
+1
+
+CL-USER>
+(defparameter *glob* 99)
+*GLOB*
+
+CL-USER>
+(defconstant limit (+ *glob* 1))
+LIMIT
+
+CL-USER>
+(let ((n 10))
+  (setf n 2)
+  n)
+2
+
+CL-USER>
+(let ((x 1) (y 2))  ; x & y valid in body of let
+    (+ x y))
+3
+
+CL-USER>
+(let ((n 10))
+  ;(setf n 2)
+  n)
+10
+
+CL-USER>
+(let ((n 10))
+  (setf n 2)
+  n)
+2
+
+CL-USER>
+(setf x (list 'a 'b 'c))
+; in: SETF X
+;     (SETF X (LIST 'A 'B 'C))
+;
+; caught WARNING:
+;   undefined variable: COMMON-LISP-USER::X
+;
+; compilation unit finished
+;   Undefined variable:
+;     X
+;   caught 1 WARNING condition
+
+(A B C)
+
+CL-USER>
+(setf (car x) 'n)
+N
+
+CL-USER>
+x
+(N B C)
+
+CL-USER>
+(setf x (list 'a 'b 'c))
+; in: SETF X
+;     (SETF X (LIST 'A 'B 'C))
+;
+; caught WARNING:
+;   undefined variable: COMMON-LISP-USER::X
+;
+; compilation unit finished
+;   Undefined variable:
+;     X
+;   caught 1 WARNING condition
+
+(A B C)
+
+CL-USER>
+(setf a b
+      c d
+      e f)
+; in: SETF A
+;     (SETF A B)
+;
+; caught WARNING:
+;   undefined variable: COMMON-LISP-USER::A
+
+; ==>
+;   (SET 'A B)
+;
+; caught WARNING:
+;   undefined variable: COMMON-LISP-USER::B
+;
+; compilation unit finished
+;   Undefined variables:
+;     A B
+;   caught 2 WARNING conditions
+
+(setf lst '(c a r a t))
+; in: SETF LST
+;     (SETF LST '(C A R A T))
+;
+; caught WARNING:
+;   undefined variable: COMMON-LISP-USER::LST
+;
+; compilation unit finished
+;   Undefined variable:
+;     LST
+;   caught 1 WARNING condition
+
+(C A R A T)
+
+CL-USER>
+(remove 'a lst)
+(C R T)
+
+CL-USER>
+lst
+(C A R A T)
+
+CL-USER>
+(defun show-squares (start end)
+    (do ((i start (+ i 1)))
+        ((> i end) 'done)
+      (format t "~A ~A~%" i (* i i))))
+SHOW-SQUARES
+
+CL-USER>
+(show-squares 2 5)
+2 4
+3 9
+4 16
+5 25
+
+DONE
+
+CL-USER>
+(defun show-squares (start end)
+    (do ((i start (+ i 1)))
+        ((> i end) 'done)
+        (format t "~A ~A~%" i (* i i))))
+WARNING: redefining COMMON-LISP-USER::SHOW-SQUARES in DEFUN
+
+SHOW-SQUARES
+
+CL-USER>
+(show-squares 2 5)
+2 4
+3 9
+4 16
+5 25
+
+DONE
+
+CL-USER>
+(defun show-squares (start end)
+    (do ((i start (+ i 1)))
+        ((> i end) 'done)
+        (format t "~A ~A~%" i (* i i))))
+WARNING: redefining COMMON-LISP-USER::SHOW-SQUARES in DEFUN
+
+SHOW-SQUARES
+
+CL-USER>
+(show-squares 2 5)
+2 4
+3 9
+4 16
+5 25
+
+DONE
+
+CL-USER>
+(defun our-length (lst)
+    (let ((len 0))
+      (dolist (obj lst)
+        (setf len (+ len `)))
+      len))
+(defun our-length (lst)
+    (let ((len 0))
+      (dolist (obj lst)
+        (setf len (+ len 1)))
+      len))
+OUR-LENGTH
+
+CL-USER>
+(defun our-length (lst)
+    (let ((len 0))
+      (dolist (obj lst)
+        (setf len (+ len 1)))
+      len))
+WARNING: redefining COMMON-LISP-USER::OUR-LENGTH in DEFUN
+
+OUR-LENGTH
+
+CL-USER>
+(our-length '(a b c))
+3
+
+CL-USER>
+(defun our-length (lst)
+    (let ((len 0))
+      (dolist (obj lst)
+        (setf len (+ len 1)))
+        len))
+WARNING: redefining COMMON-LISP-USER::OUR-LENGTH in DEFUN
+
+OUR-LENGTH
+
+CL-USER>
+(our-length '(a b c))
+3
+
+CL-USER>
+#'+
+#'+
+CL-USER>
+CL-USER>
+; special operator
+(function +)
+CL-USER>
+CL-USER>
+(#'+)
+; in: #'+
+;     (#'+)
+;
+; caught ERROR:
+;   illegal function call
+;
+; compilation unit finished
+;   caught 1 ERROR condition
+
+;;;; Functions as objects
+; No valu
+#<FUNCTION +>
+
+CL-USER>
+CL-USER>
+CL-USER>
+CL-USER>
+CL-USER>
+;;; sharp-quote #' is like ' for functions
+; No value
+CL-USER>
+(apply #'+ 1 2 '(3 4 5))
+15
+
+CL-USER>
+(funcall #'+ 1 2 3)
+6
+
+CL-USER>
+(lambda (x y)
+    (+ x y))
+CL-USER>
+((lambda (x) (+ x 100)) 1)
+101
+
+CL-USER>
+(funcall #'(lambda (x) (+ x 100))
+         1)
+101
+
+CL-USER>
+(+ (- 5 1) (+ 3 7))
+14
+
+CL-USER>
+(list 1 (+ 2 3))
+(1 5)
+
+CL-USER>
+(if (listp 1) (+ 1 2) (+ 3 4))
+7
+
+CL-USER>
+(list (and (listp 3) t) (+ 1 2))
+(NIL 3)
+
+CL-USER>
+(cons 'a '(b c))
+(A B C)
+
+CL-USER>
+(cons '(a b) 'c)
+((A B) . C)
+
+CL-USER>
+(cons '(a b) 'c)
+((A B) . C)
+
+CL-USER>
+(cons 'a 'b 'c)
+(cons 'a 'b 'c)
+(cons '(a b) '(c))
+((A B) C)
+
+CL-USER>
+(cons 'a 'b '(c))
+Help! 11 nested errors. SB-KERNEL:*MAXIMUM-ERROR-DEPTH* exceeded.
+Backtrace for: #<SB-THREAD:THREAD "new-repl-thread" RUNNING {24C0D7F1}>
+0: (CONS A B (C)) [external]
+1: (SB-INT:SIMPLE-EVAL-IN-LEXENV (CONS (QUOTE A) (QUOTE B) (QUOTE (C))) #<NULL-LEXENV>)
+2: (EVAL (CONS (QUOTE A) (QUOTE B) (QUOTE (C))))
+3: (SWANK::EVAL-REGION "(cons 'a 'b '(c))")
+4: ((LAMBDA NIL :IN SWANK-REPL::REPL-EVAL))
+5: (SWANK-REPL::TRACK-PACKAGE #<FUNCTION (LAMBDA NIL :IN SWANK-REPL::REPL-EVAL) {240E00A5}>)
+6: (SWANK::CALL-WITH-RETRY-RESTART "Retry SLIME REPL evaluation request." #<FUNCTION (LAMBDA NIL :IN SWANK-REPL::REPL-EVAL) {240E0075}>)
+7: (SWANK::CALL-WITH-BUFFER-SYNTAX NIL #<FUNCTION (LAMBDA NIL :IN SWANK-REPL::REPL-EVAL) {240E0065}>)
+8: (SWANK-REPL::REPL-EVAL "(cons 'a 'b '(c))")
+9: (SB-INT:SIMPLE-EVAL-IN-LEXENV (SWANK-REPL:LISTENER-EVAL "(cons 'a 'b '(c))") #<NULL-LEXENV>)
+10: (EVAL (SWANK-REPL:LISTENER-EVAL "(cons 'a 'b '(c))"))
+11: (SWANK:EVAL-FOR-EMACS (SWANK-REPL:LISTENER-EVAL "(cons 'a 'b '(c))") SWANK-IO-PACKAGE::CL-USER 61286)
+12: (SWANK::SLDB-LOOP 6)
+13: ((FLET SWANK/BACKEND:CALL-WITH-DEBUGGING-ENVIRONMENT :IN "c:/Users/grw40/.vscode/extensions/rheller.alive-0.2.6/out/slime/2.26.1/slime-slime-15cf060/swank/sbcl.lisp") #<FUNCTION (LAMBDA NIL :IN SWANK::DEBUG-IN-EMACS) {25DB59B5}>)
+14: (SWANK::DEBUG-IN-EMACS #<SB-INT:SIMPLE-PROGRAM-ERROR "invalid number of arguments: ~S" {265B9239}>)
+15: (SWANK:INVOKE-SLIME-DEBUGGER #<SB-INT:SIMPLE-PROGRAM-ERROR "invalid number of arguments: ~S" {265B9239}>)
+16: (SWANK/SBCL::CALL-WITH-BREAK-HOOK #<FUNCTION SWANK:SWANK-DEBUGGER-HOOK> #<FUNCTION (LAMBDA NIL :IN SWANK:SWANK-DEBUGGER-HOOK) {265B927D}>)
+17: ((FLET SWANK/BACKEND:CALL-WITH-DEBUGGER-HOOK :IN "c:/Users/grw40/.vscode/extensions/rheller.alive-0.2.6/out/slime/2.26.1/slime-slime-15cf060/swank/sbcl.lisp") #<FUNCTION SWANK:SWANK-DEBUGGER-HOOK> #<FUNCTION (LAMBDA NIL :IN SWANK:SWANK-DEBUGGER-HOOK) {265B927D}>)
+18: (SWANK:SWANK-DEBUGGER-HOOK #<SB-INT:SIMPLE-PROGRAM-ERROR "invalid number of arguments: ~S" {265B9239}> #<unused argument>)
+19: (SB-DEBUG::RUN-HOOK *DEBUGGER-HOOK* #<SB-INT:SIMPLE-PROGRAM-ERROR "invalid number of arguments: ~S" {265B9239}>)
+20: (INVOKE-DEBUGGER #<SB-INT:SIMPLE-PROGRAM-ERROR "invalid number of arguments: ~S" {265B9239}>)
+21: (ERROR #<SB-INT:SIMPLE-PROGRAM-ERROR "invalid number of arguments: ~S" {265B9239}>)
+22: (SB-INT:%PROGRAM-ERROR "invalid number of arguments: ~S" 3)
+23: ("INVALID-ARG-COUNT-ERROR" 3)
+24: (SB-KERNEL:INTERNAL-ERROR #.(SB-SYS:INT-SAP #X00DBBBC8) #<unused argument>)
+25: ("foreign function: #x42BE6D")
+26: ("foreign function: #x40417D")
+27: ("foreign function: #x40BBBB")
+28: ("foreign function: #x41B7FA")
+29: ("foreign function: #x42BF28")
+30: (CONS A B C) [external]
+31: (SB-INT:SIMPLE-EVAL-IN-LEXENV (CONS (QUOTE A) (QUOTE B) (QUOTE C)) #<NULL-LEXENV>)
+32: (EVAL (CONS (QUOTE A) (QUOTE B) (QUOTE C)))
+33: (SWANK::EVAL-REGION "(cons 'a 'b 'c)")
+34: ((LAMBDA NIL :IN SWANK-REPL::REPL-EVAL))
+35: (SWANK-REPL::TRACK-PACKAGE #<FUNCTION (LAMBDA NIL :IN SWANK-REPL::REPL-EVAL) {265B8D05}>)
+36: (SWANK::CALL-WITH-RETRY-RESTART "Retry SLIME REPL evaluation request." #<FUNCTION (LAMBDA NIL :IN SWANK-REPL::REPL-EVAL) {265B8CD5}>)
+37: (SWANK::CALL-WITH-BUFFER-SYNTAX NIL #<FUNCTION (LAMBDA NIL :IN SWANK-REPL::REPL-EVAL) {265B8CC5}>)
+38: (SWANK-REPL::REPL-EVAL "(cons 'a 'b 'c)")
+39: (SB-INT:SIMPLE-EVAL-IN-LEXENV (SWANK-REPL:LISTENER-EVAL "(cons 'a 'b 'c)") #<NULL-LEXENV>)
+40: (EVAL (SWANK-REPL:LISTENER-EVAL "(cons 'a 'b 'c)"))
+41: (SWANK:EVAL-FOR-EMACS (SWANK-REPL:LISTENER-EVAL "(cons 'a 'b 'c)") SWANK-IO-PACKAGE::CL-USER 60860)
+42: (SWANK::SLDB-LOOP 5)
+43: ((FLET SWANK/BACKEND:CALL-WITH-DEBUGGING-ENVIRONMENT :IN "c:/Users/grw40/.vscode/extensions/rheller.alive-0.2.6/out/slime/2.26.1/slime-slime-15cf060/swank/sbcl.lisp") #<FUNCTION (LAMBDA NIL :IN SWANK::DEBUG-IN-EMACS) {25DB59B5}>)
+44: (SWANK::DEBUG-IN-EMACS #<SB-INT:SIMPLE-PROGRAM-ERROR "invalid number of arguments: ~S" {24D6F931}>)
+45: (SWANK:INVOKE-SLIME-DEBUGGER #<SB-INT:SIMPLE-PROGRAM-ERROR "invalid number of arguments: ~S" {24D6F931}>)
+46: (SWANK/SBCL::CALL-WITH-BREAK-HOOK #<FUNCTION SWANK:SWANK-DEBUGGER-HOOK> #<FUNCTION (LAMBDA NIL :IN SWANK:SWANK-DEBUGGER-HOOK) {24D6F975}>)
+47: ((FLET SWANK/BACKEND:CALL-WITH-DEBUGGER-HOOK :IN "c:/Users/grw40/.vscode/extensions/rheller.alive-0.2.6/out/slime/2.26.1/slime-slime-15cf060/swank/sbcl.lisp") #<FUNCTION SWANK:SWANK-DEBUGGER-HOOK> #<FUNCTION (LAMBDA NIL :IN SWANK:SWANK-DEBUGGER-HOOK) {24D6F975}>)
+48: (SWANK:SWANK-DEBUGGER-HOOK #<SB-INT:SIMPLE-PROGRAM-ERROR "invalid number of arguments: ~S" {24D6F931}> #<unused argument>)
+49: (SB-DEBUG::RUN-HOOK *DEBUGGER-HOOK* #<SB-INT:SIMPLE-PROGRAM-ERROR "invalid number of arguments: ~S" {24D6F931}>)
+50: (INVOKE-DEBUGGER #<SB-INT:SIMPLE-PROGRAM-ERROR "invalid number of arguments: ~S" {24D6F931}>)
+51: (ERROR #<SB-INT:SIMPLE-PROGRAM-ERROR "invalid number of arguments: ~S" {24D6F931}>)
+52: (SB-INT:%PROGRAM-ERROR "invalid number of arguments: ~S" 3)
+53: ("INVALID-ARG-COUNT-ERROR" 3)
+54: (SB-KERNEL:INTERNAL-ERROR #.(SB-SYS:INT-SAP #X00DBC8C0) #<unused argument>)
+55: ("foreign function: #x42BE6D")
+56: ("foreign function: #x40417D")
+57: ("foreign function: #x40BBBB")
+58: ("foreign function: #x41B7FA")
+59: ("foreign function: #x42BF28")
+60: (CONS A B C) [external]
+61: (SB-INT:SIMPLE-EVAL-IN-LEXENV (CONS (QUOTE A) (QUOTE B) (QUOTE C)) #<NULL-LEXENV>)
+62: (EVAL (CONS (QUOTE A) (QUOTE B) (QUOTE C)))
+63: (SWANK::EVAL-REGION "(cons 'a 'b 'c)")
+64: ((LAMBDA NIL :IN SWANK-REPL::REPL-EVAL))
+65: (SWANK-REPL::TRACK-PACKAGE #<FUNCTION (LAMBDA NIL :IN SWANK-REPL::REPL-EVAL) {2443FAB5}>)
+66: (SWANK::CALL-WITH-RETRY-RESTART "Retry SLIME REPL evaluation request." #<FUNCTION (LAMBDA NIL :IN SWANK-REPL::REPL-EVAL) {2443FA85}>)
+67: (SWANK::CALL-WITH-BUFFER-SYNTAX NIL #<FUNCTION (LAMBDA NIL :IN SWANK-REPL::REPL-EVAL) {2443FA75}>)
+68: (SWANK-REPL::REPL-EVAL "(cons 'a 'b 'c)")
+69: (SB-INT:SIMPLE-EVAL-IN-LEXENV (SWANK-REPL:LISTENER-EVAL "(cons 'a 'b 'c)") #<NULL-LEXENV>)
+70: (EVAL (SWANK-REPL:LISTENER-EVAL "(cons 'a 'b 'c)"))
+71: (SWANK:EVAL-FOR-EMACS (SWANK-REPL:LISTENER-EVAL "(cons 'a 'b 'c)") SWANK-IO-PACKAGE::CL-USER 60858)
+72: (SWANK::SLDB-LOOP 4)
+73: ((FLET SWANK/BACKEND:CALL-WITH-DEBUGGING-ENVIRONMENT :IN "c:/Users/grw40/.vscode/extensions/rheller.alive-0.2.6/out/slime/2.26.1/slime-slime-15cf060/swank/sbcl.lisp") #<FUNCTION (LAMBDA NIL :IN SWANK::DEBUG-IN-EMACS) {25DB59B5}>)
+74: (SWANK::DEBUG-IN-EMACS #<SB-INT:COMPILED-PROGRAM-ERROR {2465BA99}>)
+75: (SWANK:INVOKE-SLIME-DEBUGGER #<SB-INT:COMPILED-PROGRAM-ERROR {2465BA99}>)
+76: (SWANK/SBCL::CALL-WITH-BREAK-HOOK #<FUNCTION SWANK:SWANK-DEBUGGER-HOOK> #<FUNCTION (LAMBDA NIL :IN SWANK:SWANK-DEBUGGER-HOOK) {2465C025}>)
+77: ((FLET SWANK/BACKEND:CALL-WITH-DEBUGGER-HOOK :IN "c:/Users/grw40/.vscode/extensions/rheller.alive-0.2.6/out/slime/2.26.1/slime-slime-15cf060/swank/sbcl.lisp") #<FUNCTION SWANK:SWANK-DEBUGGER-HOOK> #<FUNCTION (LAMBDA NIL :IN SWANK:SWANK-DEBUGGER-HOOK) {2465C025}>)
+78: (SWANK:SWANK-DEBUGGER-HOOK #<SB-INT:COMPILED-PROGRAM-ERROR {2465BA99}> #<unused argument>)
+79: (SB-DEBUG::RUN-HOOK *DEBUGGER-HOOK* #<SB-INT:COMPILED-PROGRAM-ERROR {2465BA99}>)
+80: (INVOKE-DEBUGGER #<SB-INT:COMPILED-PROGRAM-ERROR {2465BA99}>)
+81: (ERROR SB-INT:COMPILED-PROGRAM-ERROR :MESSAGE "illegal function call" :SOURCE "(#'+)")
+82: ((LAMBDA ()))
+83: (SB-INT:SIMPLE-EVAL-IN-LEXENV ((FUNCTION +)) #<NULL-LEXENV>)
+84: (EVAL ((FUNCTION +)))
+85: (SWANK::EVAL-REGION "(#'+)")
+86: ((LAMBDA NIL :IN SWANK-REPL::REPL-EVAL))
+87: (SWANK-REPL::TRACK-PACKAGE #<FUNCTION (LAMBDA NIL :IN SWANK-REPL::REPL-EVAL) {2463F72D}>)
+88: (SWANK::CALL-WITH-RETRY-RESTART "Retry SLIME REPL evaluation request." #<FUNCTION (LAMBDA NIL :IN SWANK-REPL::REPL-EVAL) {2463F6FD}>)
+89: (SWANK::CALL-WITH-BUFFER-SYNTAX NIL #<FUNCTION (LAMBDA NIL :IN SWANK-REPL::REPL-EVAL) {2463F6ED}>)
+90: (SWANK-REPL::REPL-EVAL "(#'+)")
+91: (SB-INT:SIMPLE-EVAL-IN-LEXENV (SWANK-REPL:LISTENER-EVAL "(#'+)") #<NULL-LEXENV>)
+92: (EVAL (SWANK-REPL:LISTENER-EVAL "(#'+)"))
+
+(cons 'a (cons 'b (cons 'c nil)))
+(A B C)
+
+CL-USER>
+(cons 'a (cons 'b (cons 'c nil)))
+(A B C)
+
+
+CL-USER> 
+(defun our-fourth (lst) 
+    (car (cdr (cdr (cdr (lst))))))
+; in: DEFUN OUR-FOURTH
+;     (SB-INT:NAMED-LAMBDA OUR-FOURTH
+;         (LST)
+;       (BLOCK OUR-FOURTH (CAR (CDR (CDR #)))))
+; 
+; caught STYLE-WARNING:
+;   The variable LST is defined but never used.
+; in: DEFUN OUR-FOURTH
+;     (LST)
+; 
+; caught STYLE-WARNING:
+;   undefined function: COMMON-LISP-USER::LST
+; 
+; compilation unit finished
+;   Undefined function:
+;     LST
+;   caught 2 STYLE-WARNING conditions
+
+OUR-FOURTH
+
+CL-USER> 
+(our-fourth '(a b c d))
+(our-fourth '(a b c d))
+; compiling file "c:/Users/grw40/code/lispCode/ANSI_commonLisp/basics.lisp" (written 08 JAN 2022 09:21:18 PM):
+
+(defparameter *glob* 99)
+*GLOB*
+
+CL-USER> 
+(defconstant limit (+ *glob* 1))
+LIMIT
+
+CL-USER> 
+(defconstant limit (+ *glob* 1))
+LIMIT
+
+CL-USER> 
+(boundp '*glob*)
+T
+
+CL-USER> 
+(setf *glob* 98)
+98
+
+CL-USER> 
+(our-fourth '(a b c d))
+(defun our-fourth (lst) 
+    (car (cdr (cdr (cdr (lst))))))
+; in: DEFUN OUR-FOURTH
+;     (SB-INT:NAMED-LAMBDA OUR-FOURTH
+;         (LST)
+;       (BLOCK OUR-FOURTH (CAR (CDR (CDR #)))))
+; 
+; caught STYLE-WARNING:
+;   The variable LST is defined but never used.
+; in: DEFUN OUR-FOURTH
+;     (LST)
+; 
+; caught STYLE-WARNING:
+;   undefined function: COMMON-LISP-USER::LST
+; 
+; compilation unit finished
+;   Undefined function:
+;     LST
+;   caught 2 STYLE-WARNING conditions
+
+WARNING: redefining COMMON-LISP-USER::OUR-FOURTH in DEFUN
+
+OUR-FOURTH
+
+CL-USER> 
+(our-fourth '(a b c d))
+(defun our-third (x)    ; first arg. is func. name
+  (car (cdr (cdr x))))
+OUR-THIRD
+
+CL-USER> 
+(defun our-third (x)    ; first arg. is func. name
+  (car (cdr (cdr x))))
+WARNING: redefining COMMON-LISP-USER::OUR-THIRD in DEFUN
+
+OUR-THIRD
+
+CL-USER> 
+(defun our-fourth (lst) 
+    (car (cdr (cdr (lst)))))
+; in: DEFUN OUR-FOURTH
+;     (SB-INT:NAMED-LAMBDA OUR-FOURTH
+;         (LST)
+;       (BLOCK OUR-FOURTH (CAR (CDR (CDR #)))))
+; 
+; caught STYLE-WARNING:
+;   The variable LST is defined but never used.
+; in: DEFUN OUR-FOURTH
+;     (LST)
+; 
+; caught STYLE-WARNING:
+;   undefined function: COMMON-LISP-USER::LST
+; 
+; compilation unit finished
+;   Undefined function:
+;     LST
+;   caught 2 STYLE-WARNING conditions
+
+WARNING: redefining COMMON-LISP-USER::OUR-FOURTH in DEFUN
+
+OUR-FOURTH
+
+CL-USER> 
+(our-fourth '(a b c d))
+(our-third '(a b c d))
+C
+
+CL-USER> 
+(our-third '(a b c d))
+C
+
+CL-USER> 
+(defun our-third (x)    ; first arg. is func. name
+  (car (cdr (cdr x))))
+WARNING: redefining COMMON-LISP-USER::OUR-THIRD in DEFUN
+
+OUR-THIRD
+
+CL-USER> 
+(defun my-fourth (x) 
+    (car (cdr (cdr (x)))))
+; in: DEFUN MY-FOURTH
+;     (SB-INT:NAMED-LAMBDA MY-FOURTH
+;         (X)
+;       (BLOCK MY-FOURTH (CAR (CDR (CDR #)))))
+; 
+; caught STYLE-WARNING:
+;   The variable X is defined but never used.
+; in: DEFUN MY-FOURTH
+;     (X)
+; 
+; caught STYLE-WARNING:
+;   undefined function: COMMON-LISP-USER::X
+; 
+; compilation unit finished
+;   Undefined function:
+;     X
+;   caught 2 STYLE-WARNING conditions
+
+MY-FOURTH
+
+CL-USER> 
+(our-fourth '(a b c d))
+Help! 11 nested errors. SB-KERNEL:*MAXIMUM-ERROR-DEPTH* exceeded.
+Backtrace for: #<SB-THREAD:THREAD "repl-thread" RUNNING {245F8189}>
+0: ("undefined function")
+1: (OUR-FOURTH #<unused argument>)
+2: (SB-INT:SIMPLE-EVAL-IN-LEXENV (OUR-FOURTH (QUOTE (A B C D))) #<NULL-LEXENV>)
+3: (EVAL (OUR-FOURTH (QUOTE (A B C D))))
+4: (SWANK::EVAL-REGION "(our-fourth '(a b c d))")
+5: ((LAMBDA NIL :IN SWANK-REPL::REPL-EVAL))
+6: (SWANK-REPL::TRACK-PACKAGE #<FUNCTION (LAMBDA NIL :IN SWANK-REPL::REPL-EVAL) {257ED25D}>)
+7: (SWANK::CALL-WITH-RETRY-RESTART "Retry SLIME REPL evaluation request." #<FUNCTION (LAMBDA NIL :IN SWANK-REPL::REPL-EVAL) {257ED22D}>)
+8: (SWANK::CALL-WITH-BUFFER-SYNTAX NIL #<FUNCTION (LAMBDA NIL :IN SWANK-REPL::REPL-EVAL) {257ED21D}>)
+9: (SWANK-REPL::REPL-EVAL "(our-fourth '(a b c d))")
+10: (SB-INT:SIMPLE-EVAL-IN-LEXENV (SWANK-REPL:LISTENER-EVAL "(our-fourth '(a b c d))") #<NULL-LEXENV>)
+11: (EVAL (SWANK-REPL:LISTENER-EVAL "(our-fourth '(a b c d))"))
+12: (SWANK:EVAL-FOR-EMACS (SWANK-REPL:LISTENER-EVAL "(our-fourth '(a b c d))") SWANK-IO-PACKAGE::CL-USER 8827)
+13: (SWANK::SLDB-LOOP 5)
+14: ((FLET SWANK/BACKEND:CALL-WITH-DEBUGGING-ENVIRONMENT :IN "c:/Users/grw40/.vscode/extensions/rheller.alive-0.2.6/out/slime/2.26.1/slime-slime-15cf060/swank/sbcl.lisp") #<FUNCTION (LAMBDA NIL :IN SWANK::DEBUG-IN-EMACS) {25EA55F5}>)
+15: (SWANK::DEBUG-IN-EMACS #<UNDEFINED-FUNCTION LST {255DA1B9}>)
+16: (SWANK:INVOKE-SLIME-DEBUGGER #<UNDEFINED-FUNCTION LST {255DA1B9}>)
+17: (SWANK/SBCL::CALL-WITH-BREAK-HOOK #<FUNCTION SWANK:SWANK-DEBUGGER-HOOK> #<FUNCTION (LAMBDA NIL :IN SWANK:SWANK-DEBUGGER-HOOK) {255DA1FD}>)
+18: ((FLET SWANK/BACKEND:CALL-WITH-DEBUGGER-HOOK :IN "c:/Users/grw40/.vscode/extensions/rheller.alive-0.2.6/out/slime/2.26.1/slime-slime-15cf060/swank/sbcl.lisp") #<FUNCTION SWANK:SWANK-DEBUGGER-HOOK> #<FUNCTION (LAMBDA NIL :IN SWANK:SWANK-DEBUGGER-HOOK) {255DA1FD}>)
+19: (SWANK:SWANK-DEBUGGER-HOOK #<UNDEFINED-FUNCTION LST {255DA1B9}> #<unused argument>)
+20: (SB-DEBUG::RUN-HOOK *DEBUGGER-HOOK* #<UNDEFINED-FUNCTION LST {255DA1B9}>)
+21: (INVOKE-DEBUGGER #<UNDEFINED-FUNCTION LST {255DA1B9}>)
+22: (ERROR #<UNDEFINED-FUNCTION LST {255DA1B9}>)
+23: ("UNDEFINED-FUN-ERROR" #<SB-KERNEL:FDEFN LST>)
+24: (SB-KERNEL:INTERNAL-ERROR #.(SB-SYS:INT-SAP #X0655BC48) #<unused argument>)
+25: ("foreign function: #x42BE6D")
+26: ("foreign function: #x40417D")
+27: ("foreign function: #x40BBBB")
+28: ("foreign function: #x41B7FA")
+29: ("foreign function: #x42BF28")
+30: ("undefined function")
+31: (OUR-FOURTH #<unused argument>)
+32: (SB-INT:SIMPLE-EVAL-IN-LEXENV (OUR-FOURTH (QUOTE (A B C D))) #<NULL-LEXENV>)
+33: (EVAL (OUR-FOURTH (QUOTE (A B C D))))
+34: (SWANK::EVAL-REGION "(our-fourth '(a b c d))")
+35: ((LAMBDA NIL :IN SWANK-REPL::REPL-EVAL))
+36: (SWANK-REPL::TRACK-PACKAGE #<FUNCTION (LAMBDA NIL :IN SWANK-REPL::REPL-EVAL) {255D9D75}>)
+37: (SWANK::CALL-WITH-RETRY-RESTART "Retry SLIME REPL evaluation request." #<FUNCTION (LAMBDA NIL :IN SWANK-REPL::REPL-EVAL) {255D9D45}>)
+38: (SWANK::CALL-WITH-BUFFER-SYNTAX NIL #<FUNCTION (LAMBDA NIL :IN SWANK-REPL::REPL-EVAL) {255D9D35}>)
+39: (SWANK-REPL::REPL-EVAL "(our-fourth '(a b c d))")
+40: (SB-INT:SIMPLE-EVAL-IN-LEXENV (SWANK-REPL:LISTENER-EVAL "(our-fourth '(a b c d))") #<NULL-LEXENV>)
+41: (EVAL (SWANK-REPL:LISTENER-EVAL "(our-fourth '(a b c d))"))
+42: (SWANK:EVAL-FOR-EMACS (SWANK-REPL:LISTENER-EVAL "(our-fourth '(a b c d))") SWANK-IO-PACKAGE::CL-USER 8810)
+43: (SWANK::SLDB-LOOP 4)
+44: ((FLET SWANK/BACKEND:CALL-WITH-DEBUGGING-ENVIRONMENT :IN "c:/Users/grw40/.vscode/extensions/rheller.alive-0.2.6/out/slime/2.26.1/slime-slime-15cf060/swank/sbcl.lisp") #<FUNCTION (LAMBDA NIL :IN SWANK::DEBUG-IN-EMACS) {25EA55F5}>)
+45: (SWANK::DEBUG-IN-EMACS #<UNDEFINED-FUNCTION LST {260C9F69}>)
+46: (SWANK:INVOKE-SLIME-DEBUGGER #<UNDEFINED-FUNCTION LST {260C9F69}>)
+47: (SWANK/SBCL::CALL-WITH-BREAK-HOOK #<FUNCTION SWANK:SWANK-DEBUGGER-HOOK> #<FUNCTION (LAMBDA NIL :IN SWANK:SWANK-DEBUGGER-HOOK) {260C9FAD}>)
+48: ((FLET SWANK/BACKEND:CALL-WITH-DEBUGGER-HOOK :IN "c:/Users/grw40/.vscode/extensions/rheller.alive-0.2.6/out/slime/2.26.1/slime-slime-15cf060/swank/sbcl.lisp") #<FUNCTION SWANK:SWANK-DEBUGGER-HOOK> #<FUNCTION (LAMBDA NIL :IN SWANK:SWANK-DEBUGGER-HOOK) {260C9FAD}>)
+49: (SWANK:SWANK-DEBUGGER-HOOK #<UNDEFINED-FUNCTION LST {260C9F69}> #<unused argument>)
+50: (SB-DEBUG::RUN-HOOK *DEBUGGER-HOOK* #<UNDEFINED-FUNCTION LST {260C9F69}>)
+51: (INVOKE-DEBUGGER #<UNDEFINED-FUNCTION LST {260C9F69}>)
+52: (ERROR #<UNDEFINED-FUNCTION LST {260C9F69}>)
+53: ("UNDEFINED-FUN-ERROR" #<SB-KERNEL:FDEFN LST>)
+54: (SB-KERNEL:INTERNAL-ERROR #.(SB-SYS:INT-SAP #X0655C920) #<unused argument>)
+55: ("foreign function: #x42BE6D")
+56: ("foreign function: #x40417D")
+57: ("foreign function: #x40BBBB")
+58: ("foreign function: #x41B7FA")
+59: ("foreign function: #x42BF28")
+60: ("undefined function")
+61: (OUR-FOURTH #<unused argument>)
+62: (SB-INT:SIMPLE-EVAL-IN-LEXENV (OUR-FOURTH (QUOTE (A B C D))) #<NULL-LEXENV>)
+63: (EVAL (OUR-FOURTH (QUOTE (A B C D))))
+64: (SWANK::EVAL-REGION "(our-fourth '(a b c d))")
+65: ((LAMBDA NIL :IN SWANK-REPL::REPL-EVAL))
+66: (SWANK-REPL::TRACK-PACKAGE #<FUNCTION (LAMBDA NIL :IN SWANK-REPL::REPL-EVAL) {260C9B3D}>)
+67: (SWANK::CALL-WITH-RETRY-RESTART "Retry SLIME REPL evaluation request." #<FUNCTION (LAMBDA NIL :IN SWANK-REPL::REPL-EVAL) {260C9B0D}>)
+68: (SWANK::CALL-WITH-BUFFER-SYNTAX NIL #<FUNCTION (LAMBDA NIL :IN SWANK-REPL::REPL-EVAL) {260C9AFD}>)
+69: (SWANK-REPL::REPL-EVAL "(our-fourth '(a b c d))")
+70: (SB-INT:SIMPLE-EVAL-IN-LEXENV (SWANK-REPL:LISTENER-EVAL "(our-fourth '(a b c d))") #<NULL-LEXENV>)
+71: (EVAL (SWANK-REPL:LISTENER-EVAL "(our-fourth '(a b c d))"))
+72: (SWANK:EVAL-FOR-EMACS (SWANK-REPL:LISTENER-EVAL "(our-fourth '(a b c d))") SWANK-IO-PACKAGE::CL-USER 766)
+73: (SWANK::SLDB-LOOP 3)
+74: ((FLET SWANK/BACKEND:CALL-WITH-DEBUGGING-ENVIRONMENT :IN "c:/Users/grw40/.vscode/extensions/rheller.alive-0.2.6/out/slime/2.26.1/slime-slime-15cf060/swank/sbcl.lisp") #<FUNCTION (LAMBDA NIL :IN SWANK::DEBUG-IN-EMACS) {25EA55F5}>)
+75: (SWANK::DEBUG-IN-EMACS #<UNDEFINED-FUNCTION LST {2529AF29}>)
+76: (SWANK:INVOKE-SLIME-DEBUGGER #<UNDEFINED-FUNCTION LST {2529AF29}>)
+77: (SWANK/SBCL::CALL-WITH-BREAK-HOOK #<FUNCTION SWANK:SWANK-DEBUGGER-HOOK> #<FUNCTION (LAMBDA NIL :IN SWANK:SWANK-DEBUGGER-HOOK) {2529AF6D}>)
+78: ((FLET SWANK/BACKEND:CALL-WITH-DEBUGGER-HOOK :IN "c:/Users/grw40/.vscode/extensions/rheller.alive-0.2.6/out/slime/2.26.1/slime-slime-15cf060/swank/sbcl.lisp") #<FUNCTION SWANK:SWANK-DEBUGGER-HOOK> #<FUNCTION (LAMBDA NIL :IN SWANK:SWANK-DEBUGGER-HOOK) {2529AF6D}>)
+79: (SWANK:SWANK-DEBUGGER-HOOK #<UNDEFINED-FUNCTION LST {2529AF29}> #<unused argument>)
+80: (SB-DEBUG::RUN-HOOK *DEBUGGER-HOOK* #<UNDEFINED-FUNCTION LST {2529AF29}>)
+81: (INVOKE-DEBUGGER #<UNDEFINED-FUNCTION LST {2529AF29}>)
+82: (ERROR #<UNDEFINED-FUNCTION LST {2529AF29}>)
+83: ("UNDEFINED-FUN-ERROR" #<SB-KERNEL:FDEFN LST>)
+84: (SB-KERNEL:INTERNAL-ERROR #.(SB-SYS:INT-SAP #X0655D5F8) #<unused argument>)
+85: ("foreign function: #x42BE6D")
+86: ("foreign function: #x40417D")
+87: ("foreign function: #x40BBBB")
+88: ("foreign function: #x41B7FA")
+89: ("foreign function: #x42BF28")
+90: ("undefined function")
+91: (OUR-FOURTH #<unused argument>)
+92: (SB-INT:SIMPLE-EVAL-IN-LEXENV (OUR-FOURTH (QUOTE (A B C D))) #<NULL-LEXENV>)
+93: (EVAL (OUR-FOURTH (QUOTE (A B C D))))
+94: (SWANK::EVAL-REGION "(our-fourth '(a b c d))")
+95: ((LAMBDA NIL :IN SWANK-REPL::REPL-EVAL))
+96: (SWANK-REPL::TRACK-PACKAGE #<FUNCTION (LAMBDA NIL :IN SWANK-REPL::REPL-EVAL) {2529AB15}>)
+97: (SWANK::CALL-WITH-RETRY-RESTART "Retry SLIME REPL evaluation request." #<FUNCTION (LAMBDA NIL :IN SWANK-REPL::REPL-EVAL) {2529AAE5}>)
+98: (SWANK::CALL-WITH-BUFFER-SYNTAX NIL #<FUNCTION (LAMBDA NIL :IN SWANK-REPL::REPL-EVAL) {2529AAD5}>)
+99: (SWANK-REPL::REPL-EVAL "(our-fourth '(a b c d))")
+100: (SB-INT:SIMPLE-EVAL-IN-LEXENV (SWANK-REPL:LISTENER-EVAL "(our-fourth '(a b c d))") #<NULL-LEXENV>)
+101: (EVAL (SWANK-REPL:LISTENER-EVAL "(our-fourth '(a b c d))"))
+
+(my-fourth '(a b c d))
+Help! ERROR-ERROR is 2 levels deep. Will try to reset the IO streams and disable debugger hooks.
+
+CL-USER> 
+(defun my-fourth (x) 
+    (car (cdr (cdr (x)))))
+; in: DEFUN MY-FOURTH
+;     (SB-INT:NAMED-LAMBDA MY-FOURTH
+;         (X)
+;       (BLOCK MY-FOURTH (CAR (CDR (CDR #)))))
+; 
+; caught STYLE-WARNING:
+;   The variable X is defined but never used.
+; in: DEFUN MY-FOURTH
+;     (X)
+; 
+; caught STYLE-WARNING:
+;   undefined function: COMMON-LISP-USER::X
+; 
+; compilation unit finished
+;   Undefined function:
+;     X
+;   caught 2 STYLE-WARNING conditions
+
+MY-FOURTH
+
+CL-USER> 
+(my-fourth '(a b c d))
+(defun my-third (x)
+  (car (cdr (cdr x))))
+MY-THIRD
+
+CL-USER> 
+(defun my-fourth (x) 
+    (car (cdr (cdr (cdr x)))))
+WARNING: redefining COMMON-LISP-USER::MY-FOURTH in DEFUN
+
+MY-FOURTH
+
+CL-USER> 
+(my-fourth '(a b c d))
+D
+
+CL-USER> 
+(defun greater-than (x y) 
+    (if x>y x y))
+; in: DEFUN GREATER-THAN
+;     (IF X>Y
+;         X
+;         Y)
+; 
+; caught WARNING:
+;   undefined variable: COMMON-LISP-USER::X>Y
+; 
+; compilation unit finished
+;   Undefined variable:
+;     X>Y
+;   caught 1 WARNING condition
+
+GREATER-THAN
+
+CL-USER> 
+(greater-than 10 2)
+(defun greater-than (x y) 
+    (if (x>y) x y))
+; in: DEFUN GREATER-THAN
+;     (X>Y)
+; 
+; caught STYLE-WARNING:
+;   undefined function: COMMON-LISP-USER::X>Y
+; 
+; compilation unit finished
+;   Undefined function:
+;     X>Y
+;   caught 1 STYLE-WARNING condition
+
+WARNING: redefining COMMON-LISP-USER::GREATER-THAN in DEFUN
+
+GREATER-THAN
+
+CL-USER> 
+(greater-than 10 2)
+(defun greater-than (x y) 
+    (if (> x y) x y))
+WARNING: redefining COMMON-LISP-USER::GREATER-THAN in DEFUN
+
+GREATER-THAN
+
+CL-USER> 
+(greater-than 10 2)
+10
+
+CL-USER> 
+(defun enigma (x) 
+    (and (not (null x))
+        (or (null (car x))
+            (einmga (cdr x)))))
+; in: DEFUN ENIGMA
+;     (EINMGA (CDR X))
+; 
+; caught STYLE-WARNING:
+;   undefined function: COMMON-LISP-USER::EINMGA
+; 
+; compilation unit finished
+;   Undefined function:
+;     EINMGA
+;   caught 1 STYLE-WARNING condition
+
+ENIGMA
+
+CL-USER> 
+(defun enigma (x) 
+    (and (not (null x))
+        (or (null (car x))
+            (enigma (cdr x)))))
+WARNING: redefining COMMON-LISP-USER::ENIGMA in DEFUN
+
+ENIGMA
+
+CL-USER> 
+(enigma nil)
+NIL
+
+CL-USER> 
+(enigma none)
+(enigma 0)
+CL-USER> 
+(enigma 0)
+; in: ENIGMA 0
+;     (ENIGMA 0)
+; 
+; caught STYLE-WARNING:
+;   undefined function: COMMON-LISP-USER::ENIGMA
+; 
+; compilation unit finished
+;   Undefined function:
+;     ENIGMA
+;   caught 1 STYLE-WARNING condition
+
+(enigma (0))
+; in: ENIGMA (0)
+;     (0)
+; 
+; caught ERROR:
+;   illegal function call
+; 
+; compilation unit finished
+;   caught 1 ERROR condition
+
+(defun enigma (x) 
+    (and (not (null x))
+        (or (null (car x))
+            (enigma (cdr x)))))
+ENIGMA
+
+CL-USER> 
+(enigma 0)
+(enigma t)
+(enigma nil)
+NIL
+
+CL-USER> 
+(enigma t)
+(enigma '(1 2 3 4))
+NIL
+
+CL-USER> 
+(defun myster (x y) 
+    (if (null y) 
+        nil
+        (if (eql (car y) x) 
+            0
+            (let ((z (mystery x (cdr y))))
+                (and z (+ z 1))))))
+; in: DEFUN MYSTER
+;     (MYSTERY X (CDR Y))
+; 
+; caught STYLE-WARNING:
+;   undefined function: COMMON-LISP-USER::MYSTERY
+; 
+; compilation unit finished
+;   Undefined function:
+;     MYSTERY
+;   caught 1 STYLE-WARNING condition
+
+MYSTER
+
+CL-USER> 
+(defun mystery (x y) 
+    (if (null y) 
+        nil
+        (if (eql (car y) x) 
+            0
+            (let ((z (mystery x (cdr y))))
+                (and z (+ z 1))))))
+MYSTERY
+
+CL-USER> (and 2 3)
+(and 2 3)
+3
+
+CL-USER> (and 4 5)
+(and 4 5)
+5
+
+CL-USER> (and 5 4)
+(and 5 4)
+4
+
+CL-USER> 
+(defun mystery (x y)  ; def func mystery takes x and y
+    (if (null y) ; if y is null
+        nil      ; return nil
+        (if (eql (car y) x) ; elseif the beginning of y and x are equal
+            0 ; return 0
+            (let ((z (mystery x (cdr y)))) ; else define z as a call to mystery with the cdr of y
+                (and z (+ z 1))))))
+WARNING: redefining COMMON-LISP-USER::MYSTERY in DEFUN
+
+MYSTERY
+
+CL-USER>
+CL-USER>
+Help! 11 nested errors. SB-KERNEL:*MAXIMUM-ERROR-DEPTH* exceeded.
+Backtrace for: #<SB-THREAD:THREAD "repl-thread" RUNNING {245F8189}>
+0: (SB-INT:SIMPLE-EVAL-IN-LEXENV CL-USER> #<NULL-LEXENV>)
+1: (EVAL CL-USER>)
+2: (SWANK::EVAL-REGION "CL-USER>")
+3: ((LAMBDA NIL :IN SWANK-REPL::REPL-EVAL))
+4: (SWANK-REPL::TRACK-PACKAGE #<FUNCTION (LAMBDA NIL :IN SWANK-REPL::REPL-EVAL) {24EBA2ED}>)
+5: (SWANK::CALL-WITH-RETRY-RESTART "Retry SLIME REPL evaluation request." #<FUNCTION (LAMBDA NIL :IN SWANK-REPL::REPL-EVAL) {24EBA2BD}>)
+6: (SWANK::CALL-WITH-BUFFER-SYNTAX NIL #<FUNCTION (LAMBDA NIL :IN SWANK-REPL::REPL-EVAL) {24EBA2AD}>)
+7: (SWANK-REPL::REPL-EVAL "CL-USER>")
+8: (SB-INT:SIMPLE-EVAL-IN-LEXENV (SWANK-REPL:LISTENER-EVAL "CL-USER>") #<NULL-LEXENV>)
+9: (EVAL (SWANK-REPL:LISTENER-EVAL "CL-USER>"))
+10: (SWANK:EVAL-FOR-EMACS (SWANK-REPL:LISTENER-EVAL "CL-USER>") SWANK-IO-PACKAGE::COMMON-LISP-USER 2117)
+11: (SWANK::SLDB-LOOP 6)
+12: ((FLET SWANK/BACKEND:CALL-WITH-DEBUGGING-ENVIRONMENT :IN "c:/Users/grw40/.vscode/extensions/rheller.alive-0.2.6/out/slime/2.26.1/slime-slime-15cf060/swank/sbcl.lisp") #<FUNCTION (LAMBDA NIL :IN SWANK::DEBUG-IN-EMACS) {25A289ED}>)
+13: (SWANK::DEBUG-IN-EMACS #<TYPE-ERROR expected-type: LIST datum: 10>)
+14: (SWANK:INVOKE-SLIME-DEBUGGER #<TYPE-ERROR expected-type: LIST datum: 10>)
+15: (SWANK/SBCL::CALL-WITH-BREAK-HOOK #<FUNCTION SWANK:SWANK-DEBUGGER-HOOK> #<FUNCTION (LAMBDA NIL :IN SWANK:SWANK-DEBUGGER-HOOK) {24AB603D}>)
+16: ((FLET SWANK/BACKEND:CALL-WITH-DEBUGGER-HOOK :IN "c:/Users/grw40/.vscode/extensions/rheller.alive-0.2.6/out/slime/2.26.1/slime-slime-15cf060/swank/sbcl.lisp") #<FUNCTION SWANK:SWANK-DEBUGGER-HOOK> #<FUNCTION (LAMBDA NIL :IN SWANK:SWANK-DEBUGGER-HOOK) {24AB603D}>)
+17: (SWANK:SWANK-DEBUGGER-HOOK #<TYPE-ERROR expected-type: LIST datum: 10> #<unused argument>)
+18: (SB-DEBUG::RUN-HOOK *DEBUGGER-HOOK* #<TYPE-ERROR expected-type: LIST datum: 10>)
+19: (INVOKE-DEBUGGER #<TYPE-ERROR expected-type: LIST datum: 10>)
+20: (ERROR TYPE-ERROR :DATUM 10 :EXPECTED-TYPE LIST :CONTEXT NIL)
+21: (SB-KERNEL:INTERNAL-ERROR #.(SB-SYS:INT-SAP #X0655B688) #<unused argument>)
+22: ("foreign function: #x42BE6D")
+23: ("foreign function: #x40417D")
+24: ("foreign function: #x40BBBB")
+25: ("foreign function: #x41B7FA")
+26: ("foreign function: #x42BF28")
+27: (MYSTERY 5 10)
+28: (SB-INT:SIMPLE-EVAL-IN-LEXENV (MYSTERY 5 10) #<NULL-LEXENV>)
+29: (EVAL (MYSTERY 5 10))
+30: (SWANK::EVAL-REGION "(mystery 5 10)")
+31: ((LAMBDA NIL :IN SWANK-REPL::REPL-EVAL))
+32: (SWANK-REPL::TRACK-PACKAGE #<FUNCTION (LAMBDA NIL :IN SWANK-REPL::REPL-EVAL) {24AB54F5}>)
+33: (SWANK::CALL-WITH-RETRY-RESTART "Retry SLIME REPL evaluation request." #<FUNCTION (LAMBDA NIL :IN SWANK-REPL::REPL-EVAL) {24AB54C5}>)
+34: (SWANK::CALL-WITH-BUFFER-SYNTAX NIL #<FUNCTION (LAMBDA NIL :IN SWANK-REPL::REPL-EVAL) {24AB54B5}>)
+35: (SWANK-REPL::REPL-EVAL "(mystery 5 10)")
+36: (SB-INT:SIMPLE-EVAL-IN-LEXENV (SWANK-REPL:LISTENER-EVAL "(mystery 5 10)") #<NULL-LEXENV>)
+37: (EVAL (SWANK-REPL:LISTENER-EVAL "(mystery 5 10)"))
+38: (SWANK:EVAL-FOR-EMACS (SWANK-REPL:LISTENER-EVAL "(mystery 5 10)") SWANK-IO-PACKAGE::COMMON-LISP-USER 2115)
+39: (SWANK::SLDB-LOOP 5)
+40: ((FLET SWANK/BACKEND:CALL-WITH-DEBUGGING-ENVIRONMENT :IN "c:/Users/grw40/.vscode/extensions/rheller.alive-0.2.6/out/slime/2.26.1/slime-slime-15cf060/swank/sbcl.lisp") #<FUNCTION (LAMBDA NIL :IN SWANK::DEBUG-IN-EMACS) {25A289ED}>)
+41: (SWANK::DEBUG-IN-EMACS #<TYPE-ERROR expected-type: LIST datum: T>)
+42: (SWANK:INVOKE-SLIME-DEBUGGER #<TYPE-ERROR expected-type: LIST datum: T>)
+43: (SWANK/SBCL::CALL-WITH-BREAK-HOOK #<FUNCTION SWANK:SWANK-DEBUGGER-HOOK> #<FUNCTION (LAMBDA NIL :IN SWANK:SWANK-DEBUGGER-HOOK) {24E3AC1D}>)
+44: ((FLET SWANK/BACKEND:CALL-WITH-DEBUGGER-HOOK :IN "c:/Users/grw40/.vscode/extensions/rheller.alive-0.2.6/out/slime/2.26.1/slime-slime-15cf060/swank/sbcl.lisp") #<FUNCTION SWANK:SWANK-DEBUGGER-HOOK> #<FUNCTION (LAMBDA NIL :IN SWANK:SWANK-DEBUGGER-HOOK) {24E3AC1D}>)
+45: (SWANK:SWANK-DEBUGGER-HOOK #<TYPE-ERROR expected-type: LIST datum: T> #<unused argument>)
+46: (SB-DEBUG::RUN-HOOK *DEBUGGER-HOOK* #<TYPE-ERROR expected-type: LIST datum: T>)
+47: (INVOKE-DEBUGGER #<TYPE-ERROR expected-type: LIST datum: T>)
+48: (ERROR TYPE-ERROR :DATUM T :EXPECTED-TYPE LIST :CONTEXT NIL)
+49: (SB-KERNEL:INTERNAL-ERROR #.(SB-SYS:INT-SAP #X0655C368) #<unused argument>)
+50: ("foreign function: #x42BE6D")
+51: ("foreign function: #x40417D")
+52: ("foreign function: #x40BBBB")
+53: ("foreign function: #x41B7FA")
+54: ("foreign function: #x42BF28")
+55: (ENIGMA T)
+56: (SB-INT:SIMPLE-EVAL-IN-LEXENV (ENIGMA T) #<NULL-LEXENV>)
+57: (EVAL (ENIGMA T))
+58: (SWANK::EVAL-REGION "(enigma t)")
+59: ((LAMBDA NIL :IN SWANK-REPL::REPL-EVAL))
+60: (SWANK-REPL::TRACK-PACKAGE #<FUNCTION (LAMBDA NIL :IN SWANK-REPL::REPL-EVAL) {24E3A7A5}>)
+61: (SWANK::CALL-WITH-RETRY-RESTART "Retry SLIME REPL evaluation request." #<FUNCTION (LAMBDA NIL :IN SWANK-REPL::REPL-EVAL) {24E3A775}>)
+62: (SWANK::CALL-WITH-BUFFER-SYNTAX NIL #<FUNCTION (LAMBDA NIL :IN SWANK-REPL::REPL-EVAL) {24E3A765}>)
+63: (SWANK-REPL::REPL-EVAL "(enigma t)")
+64: (SB-INT:SIMPLE-EVAL-IN-LEXENV (SWANK-REPL:LISTENER-EVAL "(enigma t)") #<NULL-LEXENV>)
+65: (EVAL (SWANK-REPL:LISTENER-EVAL "(enigma t)"))
+66: (SWANK:EVAL-FOR-EMACS (SWANK-REPL:LISTENER-EVAL "(enigma t)") SWANK-IO-PACKAGE::CL-USER 159)
+67: (SWANK::SLDB-LOOP 4)
+68: ((FLET SWANK/BACKEND:CALL-WITH-DEBUGGING-ENVIRONMENT :IN "c:/Users/grw40/.vscode/extensions/rheller.alive-0.2.6/out/slime/2.26.1/slime-slime-15cf060/swank/sbcl.lisp") #<FUNCTION (LAMBDA NIL :IN SWANK::DEBUG-IN-EMACS) {25A289ED}>)
+69: (SWANK::DEBUG-IN-EMACS #<TYPE-ERROR expected-type: LIST datum: T>)
+70: (SWANK:INVOKE-SLIME-DEBUGGER #<TYPE-ERROR expected-type: LIST datum: T>)
+71: (SWANK/SBCL::CALL-WITH-BREAK-HOOK #<FUNCTION SWANK:SWANK-DEBUGGER-HOOK> #<FUNCTION (LAMBDA NIL :IN SWANK:SWANK-DEBUGGER-HOOK) {24C49365}>)
+72: ((FLET SWANK/BACKEND:CALL-WITH-DEBUGGER-HOOK :IN "c:/Users/grw40/.vscode/extensions/rheller.alive-0.2.6/out/slime/2.26.1/slime-slime-15cf060/swank/sbcl.lisp") #<FUNCTION SWANK:SWANK-DEBUGGER-HOOK> #<FUNCTION (LAMBDA NIL :IN SWANK:SWANK-DEBUGGER-HOOK) {24C49365}>)
+73: (SWANK:SWANK-DEBUGGER-HOOK #<TYPE-ERROR expected-type: LIST datum: T> #<unused argument>)
+74: (SB-DEBUG::RUN-HOOK *DEBUGGER-HOOK* #<TYPE-ERROR expected-type: LIST datum: T>)
+75: (INVOKE-DEBUGGER #<TYPE-ERROR expected-type: LIST datum: T>)
+76: (ERROR TYPE-ERROR :DATUM T :EXPECTED-TYPE LIST :CONTEXT NIL)
+77: (SB-KERNEL:INTERNAL-ERROR #.(SB-SYS:INT-SAP #X0655D040) #<unused argument>)
+78: ("foreign function: #x42BE6D")
+79: ("foreign function: #x40417D")
+80: ("foreign function: #x40BBBB")
+81: ("foreign function: #x41B7FA")
+82: ("foreign function: #x42BF28")
+83: (ENIGMA T)
+84: (SB-INT:SIMPLE-EVAL-IN-LEXENV (ENIGMA T) #<NULL-LEXENV>)
+85: (EVAL (ENIGMA T))
+86: (SWANK::EVAL-REGION "(enigma t)")
+87: ((LAMBDA NIL :IN SWANK-REPL::REPL-EVAL))
+88: (SWANK-REPL::TRACK-PACKAGE #<FUNCTION (LAMBDA NIL :IN SWANK-REPL::REPL-EVAL) {24C48F05}>)
+89: (SWANK::CALL-WITH-RETRY-RESTART "Retry SLIME REPL evaluation request." #<FUNCTION (LAMBDA NIL :IN SWANK-REPL::REPL-EVAL) {24C48ED5}>)
+90: (SWANK::CALL-WITH-BUFFER-SYNTAX NIL #<FUNCTION (LAMBDA NIL :IN SWANK-REPL::REPL-EVAL) {24C48EC5}>)
+91: (SWANK-REPL::REPL-EVAL "(enigma t)")
+92: (SB-INT:SIMPLE-EVAL-IN-LEXENV (SWANK-REPL:LISTENER-EVAL "(enigma t)") #<NULL-LEXENV>)
+93: (EVAL (SWANK-REPL:LISTENER-EVAL "(enigma t)"))
+94: (SWANK:EVAL-FOR-EMACS (SWANK-REPL:LISTENER-EVAL "(enigma t)") SWANK-IO-PACKAGE::CL-USER 156)
+95: (SWANK::SLDB-LOOP 3)
+96: ((FLET SWANK/BACKEND:CALL-WITH-DEBUGGING-ENVIRONMENT :IN "c:/Users/grw40/.vscode/extensions/rheller.alive-0.2.6/out/slime/2.26.1/slime-slime-15cf060/swank/sbcl.lisp") #<FUNCTION (LAMBDA NIL :IN SWANK::DEBUG-IN-EMACS) {25A289ED}>)
+97: (SWANK::DEBUG-IN-EMACS #<TYPE-ERROR expected-type: LIST datum: 0>)
+98: (SWANK:INVOKE-SLIME-DEBUGGER #<TYPE-ERROR expected-type: LIST datum: 0>)
+98: (SWANK:INVOKE-SLIME-DEBUGGER #<TYPE-ERROR expected-type: LIST datum: 0>)
+(mystery 1 1)
+Help! ERROR-ERROR is 2 levels deep. Will try to reset the IO streams and disable debugger hooks.
+
+(mystery 1 1)
+(mystery 1 1)
+(mystery 1 1)
+CL-USER> 
+(defun mystery (x y)  ; def func mystery takes x and y
+    (if (null y) ; if y is null
+        nil      ; return nil
+        (if (eql (car y) x) ; elseif the beginning of y and x are equal
+            0 ; return 0
+            (let ((z (mystery x (cdr y)))) ; else define z as a call to mystery with the cdr of y
+                (and z (+ z 1))))))
+MYSTERY
+
+CL-USER> 
+(mystery 1 1)
+(mystery 1 '(1))
+0
+
+CL-USER> 
+(mystery 1 '(2))
+NIL
+
+CL-USER> 
+(mystery 1 '(0))
+NIL
+
+CL-USER> 
+(mystery 1 '(nil))
+NIL
+
+CL-USER> 
+(mystery 1 '())
+NIL
+
+CL-USER> 
+(mystery 1 ())
+NIL
+
+CL-USER> 
+(mystery 1 '(2 3))
+NIL
+
+CL-USER> 
+(mystery 1 '(2 3))
+NIL
+
+CL-USER> 
+(defun mystery (x y)  ; def func mystery takes x and y
+    (if (null y) ; if y is null
+        nil      ; return nil
+        (if (eql (car y) x) ; elseif the beginning of y and x are equal
+            0 ; return 0
+            (let ((z (mystery x (cdr y))))))))
+; in: DEFUN MYSTERY
+;     (LET ((Z (MYSTERY X (CDR Y)))))
+; 
+; caught STYLE-WARNING:
+;   The variable Z is defined but never used.
+; 
+; compilation unit finished
+;   caught 1 STYLE-WARNING condition
+
+WARNING: redefining COMMON-LISP-USER::MYSTERY in DEFUN
+
+MYSTERY
+
+CL-USER> 
+(mystery 1 '(2 3))
+NIL
+
+CL-USER> 
+(mystery 1 '(2))
+NIL
+
+CL-USER> 
+(mystery 1 '(1 2 1 1 3))
+0
+
+CL-USER> 
+(let ((x 1) (y 2))  ; x & y valid in body of let  
+    (+ x y))
+3
+
+CL-USER> 
+(car (cdr (cdr '(a (b c) d))))
+D
+
+CL-USER> 
+(car (car (cdr '(a (b c) d))))
+B
+
+CL-USER> 
+(+ 13 (/ 1 0))
+(first 13 (/ 1 0))
+(/ 1 0)
+(\ 1 0)
+; in: | 1| 0
+;     (| 1| 0)
+; 
+; caught STYLE-WARNING:
+;   undefined function: COMMON-LISP-USER::| 1|
+; 
+; compilation unit finished
+;   Undefined function:
+;     | 1|
+;   caught 1 STYLE-WARNING condition
+
+(car 13 (/ 1 0))
+Help! 11 nested errors. SB-KERNEL:*MAXIMUM-ERROR-DEPTH* exceeded.
+Backtrace for: #<SB-THREAD:THREAD "repl-thread" RUNNING {24608189}>
+0: (SB-KERNEL::INTEGER-/-INTEGER 1 0)
+1: (/ 1 0)
+2: (SB-INT:SIMPLE-EVAL-IN-LEXENV (/ 1 0) #<NULL-LEXENV>)
+3: (SB-INT:SIMPLE-EVAL-IN-LEXENV (CAR 13 (/ 1 0)) #<NULL-LEXENV>)
+4: (EVAL (CAR 13 (/ 1 0)))
+5: (SWANK::EVAL-REGION "(car 13 (/ 1 0))")
+6: ((LAMBDA NIL :IN SWANK-REPL::REPL-EVAL))
+7: (SWANK-REPL::TRACK-PACKAGE #<FUNCTION (LAMBDA NIL :IN SWANK-REPL::REPL-EVAL) {24ED8EA5}>)
+8: (SWANK::CALL-WITH-RETRY-RESTART "Retry SLIME REPL evaluation request." #<FUNCTION (LAMBDA NIL :IN SWANK-REPL::REPL-EVAL) {24ED8E75}>)
+9: (SWANK::CALL-WITH-BUFFER-SYNTAX NIL #<FUNCTION (LAMBDA NIL :IN SWANK-REPL::REPL-EVAL) {24ED8E65}>)
+10: (SWANK-REPL::REPL-EVAL "(car 13 (/ 1 0))")
+11: (SB-INT:SIMPLE-EVAL-IN-LEXENV (SWANK-REPL:LISTENER-EVAL "(car 13 (/ 1 0))") #<NULL-LEXENV>)
+12: (EVAL (SWANK-REPL:LISTENER-EVAL "(car 13 (/ 1 0))"))
+13: (SWANK:EVAL-FOR-EMACS (SWANK-REPL:LISTENER-EVAL "(car 13 (/ 1 0))") SWANK-IO-PACKAGE::CL-USER 2429)
+14: (SWANK::SLDB-LOOP 5)
+15: ((FLET SWANK/BACKEND:CALL-WITH-DEBUGGING-ENVIRONMENT :IN "c:/Users/grw40/.vscode/extensions/rheller.alive-0.2.6/out/slime/2.26.1/slime-slime-15cf060/swank/sbcl.lisp") #<FUNCTION (LAMBDA NIL :IN SWANK::DEBUG-IN-EMACS) {25A289ED}>)
+16: (SWANK::DEBUG-IN-EMACS #<UNDEFINED-FUNCTION  1 {24D248D1}>)
+17: (SWANK:INVOKE-SLIME-DEBUGGER #<UNDEFINED-FUNCTION  1 {24D248D1}>)
+18: (SWANK/SBCL::CALL-WITH-BREAK-HOOK #<FUNCTION SWANK:SWANK-DEBUGGER-HOOK> #<FUNCTION (LAMBDA NIL :IN SWANK:SWANK-DEBUGGER-HOOK) {24D24915}>)
+19: ((FLET SWANK/BACKEND:CALL-WITH-DEBUGGER-HOOK :IN "c:/Users/grw40/.vscode/extensions/rheller.alive-0.2.6/out/slime/2.26.1/slime-slime-15cf060/swank/sbcl.lisp") #<FUNCTION SWANK:SWANK-DEBUGGER-HOOK> #<FUNCTION (LAMBDA NIL :IN SWANK:SWANK-DEBUGGER-HOOK) {24D24915}>)
+20: (SWANK:SWANK-DEBUGGER-HOOK #<UNDEFINED-FUNCTION  1 {24D248D1}> #<unused argument>)
+21: (SB-DEBUG::RUN-HOOK *DEBUGGER-HOOK* #<UNDEFINED-FUNCTION  1 {24D248D1}>)
+22: (INVOKE-DEBUGGER #<UNDEFINED-FUNCTION  1 {24D248D1}>)
+23: (ERROR #<UNDEFINED-FUNCTION  1 {24D248D1}>)
+24: ("UNDEFINED-FUN-ERROR" #<SB-KERNEL:FDEFN | 1|>)
+25: (SB-KERNEL:INTERNAL-ERROR #.(SB-SYS:INT-SAP #X0631BAE8) #<unused argument>)
+26: ("foreign function: #x42BE6D")
+27: ("foreign function: #x40417D")
+28: ("foreign function: #x40BBBB")
+29: ("foreign function: #x41B7FA")
+30: ("foreign function: #x42BF28")
+31: ("undefined function")
+32: (SB-INT:SIMPLE-EVAL-IN-LEXENV (| 1| 0) #<NULL-LEXENV>)
+33: (EVAL (| 1| 0))
+34: (SWANK::EVAL-REGION "(\\ 1 0)")
+35: ((LAMBDA NIL :IN SWANK-REPL::REPL-EVAL))
+36: (SWANK-REPL::TRACK-PACKAGE #<FUNCTION (LAMBDA NIL :IN SWANK-REPL::REPL-EVAL) {24D092BD}>)
+37: (SWANK::CALL-WITH-RETRY-RESTART "Retry SLIME REPL evaluation request." #<FUNCTION (LAMBDA NIL :IN SWANK-REPL::REPL-EVAL) {24D0928D}>)
+38: (SWANK::CALL-WITH-BUFFER-SYNTAX NIL #<FUNCTION (LAMBDA NIL :IN SWANK-REPL::REPL-EVAL) {24D0927D}>)
+39: (SWANK-REPL::REPL-EVAL "(\\ 1 0)")
+40: (SB-INT:SIMPLE-EVAL-IN-LEXENV (SWANK-REPL:LISTENER-EVAL "(\\ 1 0)") #<NULL-LEXENV>)
+41: (EVAL (SWANK-REPL:LISTENER-EVAL "(\\ 1 0)"))
+42: (SWANK:EVAL-FOR-EMACS (SWANK-REPL:LISTENER-EVAL "(\\ 1 0)") SWANK-IO-PACKAGE::CL-USER 2179)
+43: (SWANK::SLDB-LOOP 4)
+44: ((FLET SWANK/BACKEND:CALL-WITH-DEBUGGING-ENVIRONMENT :IN "c:/Users/grw40/.vscode/extensions/rheller.alive-0.2.6/out/slime/2.26.1/slime-slime-15cf060/swank/sbcl.lisp") #<FUNCTION (LAMBDA NIL :IN SWANK::DEBUG-IN-EMACS) {25A289ED}>)
+45: (SWANK::DEBUG-IN-EMACS #<DIVISION-BY-ZERO {24B59B09}>)
+46: (SWANK:INVOKE-SLIME-DEBUGGER #<DIVISION-BY-ZERO {24B59B09}>)
+47: (SWANK/SBCL::CALL-WITH-BREAK-HOOK #<FUNCTION SWANK:SWANK-DEBUGGER-HOOK> #<FUNCTION (LAMBDA NIL :IN SWANK:SWANK-DEBUGGER-HOOK) {24B59B4D}>)
+48: ((FLET SWANK/BACKEND:CALL-WITH-DEBUGGER-HOOK :IN "c:/Users/grw40/.vscode/extensions/rheller.alive-0.2.6/out/slime/2.26.1/slime-slime-15cf060/swank/sbcl.lisp") #<FUNCTION SWANK:SWANK-DEBUGGER-HOOK> #<FUNCTION (LAMBDA NIL :IN SWANK:SWANK-DEBUGGER-HOOK) {24B59B4D}>)
+49: (SWANK:SWANK-DEBUGGER-HOOK #<DIVISION-BY-ZERO {24B59B09}> #<unused argument>)
+50: (SB-DEBUG::RUN-HOOK *DEBUGGER-HOOK* #<DIVISION-BY-ZERO {24B59B09}>)
+51: (INVOKE-DEBUGGER #<DIVISION-BY-ZERO {24B59B09}>)
+52: (ERROR DIVISION-BY-ZERO :OPERATION / :OPERANDS (1 0))
+53: ("DIVISION-BY-ZERO-ERROR" 1 0)
+54: (SB-KERNEL:INTERNAL-ERROR #.(SB-SYS:INT-SAP #X0631C7C8) #<unused argument>)
+55: ("foreign function: #x42BE6D")
+56: ("foreign function: #x40417D")
+57: ("foreign function: #x40BBBB")
+58: ("foreign function: #x41B7FA")
+59: ("foreign function: #x42BF28")
+60: (SB-KERNEL::INTEGER-/-INTEGER 1 0)
+61: (/ 1 0)
+62: (SB-INT:SIMPLE-EVAL-IN-LEXENV (/ 1 0) #<NULL-LEXENV>)
+63: (EVAL (/ 1 0))
+64: (SWANK::EVAL-REGION "(/ 1 0)")
+65: ((LAMBDA NIL :IN SWANK-REPL::REPL-EVAL))
+66: (SWANK-REPL::TRACK-PACKAGE #<FUNCTION (LAMBDA NIL :IN SWANK-REPL::REPL-EVAL) {24B59585}>)
+67: (SWANK::CALL-WITH-RETRY-RESTART "Retry SLIME REPL evaluation request." #<FUNCTION (LAMBDA NIL :IN SWANK-REPL::REPL-EVAL) {24B59555}>)
+68: (SWANK::CALL-WITH-BUFFER-SYNTAX NIL #<FUNCTION (LAMBDA NIL :IN SWANK-REPL::REPL-EVAL) {24B59545}>)
+69: (SWANK-REPL::REPL-EVAL "(/ 1 0)")
+70: (SB-INT:SIMPLE-EVAL-IN-LEXENV (SWANK-REPL:LISTENER-EVAL "(/ 1 0)") #<NULL-LEXENV>)
+71: (EVAL (SWANK-REPL:LISTENER-EVAL "(/ 1 0)"))
+72: (SWANK:EVAL-FOR-EMACS (SWANK-REPL:LISTENER-EVAL "(/ 1 0)") SWANK-IO-PACKAGE::CL-USER 2177)
+73: (SWANK::SLDB-LOOP 3)
+74: ((FLET SWANK/BACKEND:CALL-WITH-DEBUGGING-ENVIRONMENT :IN "c:/Users/grw40/.vscode/extensions/rheller.alive-0.2.6/out/slime/2.26.1/slime-slime-15cf060/swank/sbcl.lisp") #<FUNCTION (LAMBDA NIL :IN SWANK::DEBUG-IN-EMACS) {25A289ED}>)
+75: (SWANK::DEBUG-IN-EMACS #<DIVISION-BY-ZERO {24829B11}>)
+76: (SWANK:INVOKE-SLIME-DEBUGGER #<DIVISION-BY-ZERO {24829B11}>)
+77: (SWANK/SBCL::CALL-WITH-BREAK-HOOK #<FUNCTION SWANK:SWANK-DEBUGGER-HOOK> #<FUNCTION (LAMBDA NIL :IN SWANK:SWANK-DEBUGGER-HOOK) {24829B55}>)
+78: ((FLET SWANK/BACKEND:CALL-WITH-DEBUGGER-HOOK :IN "c:/Users/grw40/.vscode/extensions/rheller.alive-0.2.6/out/slime/2.26.1/slime-slime-15cf060/swank/sbcl.lisp") #<FUNCTION SWANK:SWANK-DEBUGGER-HOOK> #<FUNCTION (LAMBDA NIL :IN SWANK:SWANK-DEBUGGER-HOOK) {24829B55}>)
+79: (SWANK:SWANK-DEBUGGER-HOOK #<DIVISION-BY-ZERO {24829B11}> #<unused argument>)
+80: (SB-DEBUG::RUN-HOOK *DEBUGGER-HOOK* #<DIVISION-BY-ZERO {24829B11}>)
+81: (INVOKE-DEBUGGER #<DIVISION-BY-ZERO {24829B11}>)
+82: (ERROR DIVISION-BY-ZERO :OPERATION / :OPERANDS (1 0))
+83: ("DIVISION-BY-ZERO-ERROR" 1 0)
+84: (SB-KERNEL:INTERNAL-ERROR #.(SB-SYS:INT-SAP #X0631D4D0) #<unused argument>)
+85: ("foreign function: #x42BE6D")
+86: ("foreign function: #x40417D")
+87: ("foreign function: #x40BBBB")
+88: ("foreign function: #x41B7FA")
+89: ("foreign function: #x42BF28")
+90: (SB-KERNEL::INTEGER-/-INTEGER 1 0)
+91: (/ 1 0)
+92: (SB-INT:SIMPLE-EVAL-IN-LEXENV (/ 1 0) #<NULL-LEXENV>)
+93: (SB-INT:SIMPLE-EVAL-IN-LEXENV (FIRST 13 (/ 1 0)) #<NULL-LEXENV>)
+94: (EVAL (FIRST 13 (/ 1 0)))
+95: (SWANK::EVAL-REGION "(first 13 (/ 1 0))")
+96: ((LAMBDA NIL :IN SWANK-REPL::REPL-EVAL))
+97: (SWANK-REPL::TRACK-PACKAGE #<FUNCTION (LAMBDA NIL :IN SWANK-REPL::REPL-EVAL) {24829585}>)
+98: (SWANK::CALL-WITH-RETRY-RESTART "Retry SLIME REPL evaluation request." #<FUNCTION (LAMBDA NIL :IN SWANK-REPL::REPL-EVAL) {24829555}>)
+99: (SWANK::CALL-WITH-BUFFER-SYNTAX NIL #<FUNCTION (LAMBDA NIL :IN SWANK-REPL::REPL-EVAL) {24829545}>)
+100: (SWANK-REPL::REPL-EVAL "(first 13 (/ 1 0))")
+101: (SB-INT:SIMPLE-EVAL-IN-LEXENV (SWANK-REPL:LISTENER-EVAL "(first 13 (/ 1 0))") #<NULL-LEXENV>)
+102: (EVAL (SWANK-REPL:LISTENER-EVAL "(first 13 (/ 1 0))"))
+103: (SWANK:EVAL-FOR-EMACS (SWANK-REPL:LISTENER-EVAL "(first 13 (/ 1 0))") SWANK-IO-PACKAGE::CL-USER 2165)
+104: (SWANK::SLDB-LOOP 2)
+105: ((FLET SWANK/BACKEND:CALL-WITH-DEBUGGING-ENVIRONMENT :IN "c:/Users/grw40/.vscode/extensions/rheller.alive-0.2.6/out/slime/2.26.1/slime-slime-15cf060/swank/sbcl.lisp") #<FUNCTION (LAMBDA NIL :IN SWANK::DEBUG-IN-EMACS) {25A289ED}>)
+
+(mystery 1 '(1 2 1 1 3))
+0
+
+CL-USER> 
+(or 13 (/ 1 0))
+13
+
+CL-USER> 
+(apply #'list 1 nil)
+(1)
+
+CL-USER> 
+(defun exists (x lst) 
+    (if (eql (car lst) x) 
+        t
+        (exists x (cdr lst))))
+EXISTS
+
+CL-USER> 
+(exists 'a '(a b c d))
+T
+
+CL-USER> 
+(exists '(a b c d))
+Help! ERROR-ERROR is 2 levels deep. Will try to reset the IO streams and disable debugger hooks.
+
+CL-USER> 
+(defun exists-a-list (lst)
+    (if (null lst) 
+        nil
+        (if (list (car lst)) 
+            t
+            (exists x (cdr lst)))))
+; in: DEFUN EXISTS-A-LIST
+;     (EXISTS X (CDR LST))
+; 
+; caught STYLE-WARNING:
+;   undefined function: COMMON-LISP-USER::EXISTS
+; 
+; caught WARNING:
+;   undefined variable: COMMON-LISP-USER::X
+; 
+; compilation unit finished
+;   Undefined function:
+;     EXISTS
+;   Undefined variable:
+;     X
+;   caught 1 WARNING condition
+;   caught 1 STYLE-WARNING condition
+
+EXISTS-A-LIST
+
+CL-USER> 
+(defun exists-a-list (lst)
+    (if (null lst) 
+        nil
+        (if (list (car lst)) 
+            t
+            (exists-a-list (cdr lst)))))
+WARNING: redefining COMMON-LISP-USER::EXISTS-A-LIST in DEFUN
+
+EXISTS-A-LIST
+
+CL-USER> 
+(exists '(a b c d))
+(exists-a-list '(a b c d))
+T
+
+CL-USER> (car '(a b c d))
+(car '(a b c d))
+A
+
+CL-USER> 
+(defun exists-a-list (lst)
+    (if (null lst) 
+        nil
+        (if (listp (car lst)) 
+            t
+            (exists-a-list (cdr lst)))))
+WARNING: redefining COMMON-LISP-USER::EXISTS-A-LIST in DEFUN
+
+EXISTS-A-LIST
+
+CL-USER> 
+(exists-a-list '(a b c d))
+NIL
+
+CL-USER> 
+(exists-a-list '(a (b c) d))
+T
+
+CL-USER> 
+CL-USER> 
+(setf *glob* 98)
+98
+
+CL-USER> 
+(let ((n 10))
+  (setf n 2) ; override scope
+  n)
+2
+
+CL-USER> (load list-compression.lisp)
+(load list-compression.lisp)
+(load "list-compression.lisp")
+(load "list-compression.lisp")
+
+; file: c:/Users/grw40/code/lispCode/ANSI_commonLisp/list-compression.lisp
+; in: DEFUN UNCOMPRESS
+;     (DEFUN UNCOMPRESS (X)
+;       (IF (NULL LST)
+;           NIL
+;           (LET ((ELT #) (REST #))
+;             (IF (CONSP ELT)
+;                 (APPEND # REST)
+;                 (CONS ELT REST)))))
+; 
+; caught STYLE-WARNING:
+;   The variable X is defined but never used.
+
+; file: c:/Users/grw40/code/lispCode/ANSI_commonLisp/list-compression.lisp
+; in: DEFUN UNCOMPRESS
+;     (NULL LST)
+; 
+; caught WARNING:
+;   undefined variable: COMMON-LISP-USER::LST
+; 
+; compilation unit finished
+;   Undefined variable:
+;     LST
+;   caught 1 WARNING condition
+;   caught 1 STYLE-WARNING condition
+
+T
+
+CL-USER> (load "list-compression.lisp")
+(load "list-compression.lisp")
+
+; file: c:/Users/grw40/code/lispCode/ANSI_commonLisp/list-compression.lisp
+; in: DEFUN UNCOMPRESS
+;     (DEFUN UNCOMPRESS (X)
+;       (IF (NULL LST)
+;           NIL
+;           (LET ((ELT #) (REST #))
+;             (IF (CONSP ELT)
+;                 (APPEND # REST)
+;                 (CONS ELT REST)))))
+; 
+; caught STYLE-WARNING:
+;   The variable X is defined but never used.
+
+; file: c:/Users/grw40/code/lispCode/ANSI_commonLisp/list-compression.lisp
+; in: DEFUN UNCOMPRESS
+;     (NULL LST)
+; 
+; caught WARNING:
+;   undefined variable: COMMON-LISP-USER::LST
+; 
+; compilation unit finished
+;   Undefined variable:
+;     LST
+;   caught 1 WARNING condition
+;   caught 1 STYLE-WARNING condition
+
+T
+
+CL-USER> (compress '(1 0 0 0 0 0 0 0 0 0))
+(compress '(1 0 0 0 0 0 0 0 0 0))
+(1 (9 0))
+
+CL-USER> (uncompress (1 (9 0)))
+(uncompress (1 (9 0)))
+; in: UNCOMPRESS (1 (9 0))
+;     (1 (9 0))
+; 
+; caught ERROR:
+;   illegal function call
+; 
+; compilation unit finished
+;   caught 1 ERROR condition
+;   caught 1 ERROR condition
+; No value
+CL-USER>(let ((x compress('(1 0 0 0 0 0))))) BODY)
+(let ((x compress('(1 0 0 0 0 0)))))
+; in: LET ((X COMPRESS ('(1 0 0 0 0 0))))
+;     (X COMPRESS ('(1 0 0 0 0 0)))
+; 
+; caught ERROR:
+;   The LET binding spec (X COMPRESS ('(1 0 0 0 0 0))) is malformed.
+; 
+; compilation unit finished
+;   caught 1 ERROR condition
+;   caught 1 ERROR condition
+; No value
+CL-USER> (let ((x compress('(1 0 0 0)))) (print x))
+(let ((x compress('(1 0 0 0)))) (print x))
+; in: LET ((X COMPRESS ('(1 0 0 0))))
+;     (X COMPRESS ('(1 0 0 0)))
+; 
+; caught ERROR:
+;   The LET binding spec (X COMPRESS ('(1 0 0 0))) is malformed.
+; 
+; compilation unit finished
+;   caught 1 ERROR conditio
+;   caught 1 ERROR conditio
+; No value
+CL-USER> 
+CL-USER> 
+; (A . B)
+; No value
+CL-USER> 
+(setf pair (cons 'a 'b))
+; in: SETF PAIR
+;     (SETF PAIR (CONS 'A 'B))
+; 
+; caught WARNING:
+;   undefined variable: COMMON-LISP-USER::PAIR
+; 
+; compilation unit finished
+;   Undefined variable:
+;     PAIR
+;   caught 1 WARNING condition
+
+(A . B)
+
+CL-USER> 
+(let ((a 10) (b 20))
+ (a . b))
+; in: LET ((A 10) (B 20))
+;     (A . B)
+; 
+; caught ERROR:
+;   (A . B) is not a proper list.
+
+;     (LET ((A 10) (B 20))
+;       (A . B))
+; 
+; caught STYLE-WARNING:
+;   The variable A is defined but never used.
+; 
+; caught STYLE-WARNING:
+;   The variable B is defined but never used.
+; in: LET ((A 10) (B 20))
+;     (A . B)
+; 
+; caught STYLE-WARNING:
+;   undefined function: COMMON-LISP-USER::A
+; 
+; compilation unit finished
+;   Undefined function:
+;     A
+;   caught 1 ERROR condition
+;   caught 3 STYLE-WARNING conditions
+
+(let ((a 10) (b 20)))
+; in: LET ((A 10) (B 20))
+;     (LET ((A 10) (B 20)))
+; 
+; caught STYLE-WARNING:
+;   The variable A is defined but never used.
+; 
+; caught STYLE-WARNING:
+;   The variable B is defined but never used.
+; 
+; compilation unit finished
+;   caught 2 STYLE-WARNING conditions
+
+NIL
+
+CL-USER> 
+(a . b)
+(a . b)
+(let ((a 10) (b '(20 nil))))
+; in: LET ((A 10) (B '(20 NIL)))
+;     (LET ((A 10) (B '(20 NIL))))
+; 
+; caught STYLE-WARNING:
+;   The variable A is defined but never used.
+; 
+; caught STYLE-WARNING:
+;   The variable B is defined but never used.
+; 
+; compilation unit finished
+;   caught 2 STYLE-WARNING conditions
+
+NIL
+
+CL-USER>
+CL-USER>
+Help! 11 nested errors. SB-KERNEL:*MAXIMUM-ERROR-DEPTH* exceeded.
+Backtrace for: #<SB-THREAD:THREAD "repl-thread" RUNNING {245F8199}>
+0: (SB-INT:SIMPLE-EVAL-IN-LEXENV CL-USER> #<NULL-LEXENV>)
+1: (EVAL CL-USER>)
+2: (SWANK::EVAL-REGION "CL-USER>")
+3: ((LAMBDA NIL :IN SWANK-REPL::REPL-EVAL))
+4: (SWANK-REPL::TRACK-PACKAGE #<FUNCTION (LAMBDA NIL :IN SWANK-REPL::REPL-EVAL) {25508CB5}>)
+5: (SWANK::CALL-WITH-RETRY-RESTART "Retry SLIME REPL evaluation request." #<FUNCTION (LAMBDA NIL :IN SWANK-REPL::REPL-EVAL) {25508C85}>)
+6: (SWANK::CALL-WITH-BUFFER-SYNTAX NIL #<FUNCTION (LAMBDA NIL :IN SWANK-REPL::REPL-EVAL) {25508C75}>)
+7: (SWANK-REPL::REPL-EVAL "CL-USER>")
+8: (SB-INT:SIMPLE-EVAL-IN-LEXENV (SWANK-REPL:LISTENER-EVAL "CL-USER>") #<NULL-LEXENV>)
+9: (EVAL (SWANK-REPL:LISTENER-EVAL "CL-USER>"))
+10: (SWANK:EVAL-FOR-EMACS (SWANK-REPL:LISTENER-EVAL "CL-USER>") SWANK-IO-PACKAGE::COMMON-LISP-USER 1877)
+11: (SWANK::SLDB-LOOP 6)
+12: ((FLET SWANK/BACKEND:CALL-WITH-DEBUGGING-ENVIRONMENT :IN "c:/Users/grw40/.vscode/extensions/rheller.alive-0.2.6/out/slime/2.26.1/slime-slime-15cf060/swank/sbcl.lisp") #<FUNCTION (LAMBDA NIL :IN SWANK::DEBUG-IN-EMACS) {25E14AE5}>)
+13: (SWANK::DEBUG-IN-EMACS #<UNBOUND-VARIABLE B {252DA801}>)
+14: (SWANK:INVOKE-SLIME-DEBUGGER #<UNBOUND-VARIABLE B {252DA801}>)
+15: (SWANK/SBCL::CALL-WITH-BREAK-HOOK #<FUNCTION SWANK:SWANK-DEBUGGER-HOOK> #<FUNCTION (LAMBDA NIL :IN SWANK:SWANK-DEBUGGER-HOOK) {252DA845}>)
+16: ((FLET SWANK/BACKEND:CALL-WITH-DEBUGGER-HOOK :IN "c:/Users/grw40/.vscode/extensions/rheller.alive-0.2.6/out/slime/2.26.1/slime-slime-15cf060/swank/sbcl.lisp") #<FUNCTION SWANK:SWANK-DEBUGGER-HOOK> #<FUNCTION (LAMBDA NIL :IN SWANK:SWANK-DEBUGGER-HOOK) {252DA845}>)
+17: (SWANK:SWANK-DEBUGGER-HOOK #<UNBOUND-VARIABLE B {252DA801}> #<unused argument>)
+18: (SB-DEBUG::RUN-HOOK *DEBUGGER-HOOK* #<UNBOUND-VARIABLE B {252DA801}>)
+19: (INVOKE-DEBUGGER #<UNBOUND-VARIABLE B {252DA801}>)
+20: (ERROR #<UNBOUND-VARIABLE B {252DA801}>)
+21: ("UNBOUND-SYMBOL-ERROR" B)
+22: (SB-KERNEL:INTERNAL-ERROR #.(SB-SYS:INT-SAP #X0666B678) #<unused argument>)
+23: ("foreign function: #x42BE6D")
+24: ("foreign function: #x40417D")
+25: ("foreign function: #x40BBBB")
+26: ("foreign function: #x41B7FA")
+27: ("foreign function: #x42BF28")
+28: (SB-INT:SIMPLE-EVAL-IN-LEXENV B #<NULL-LEXENV>)
+29: (SB-INT:SIMPLE-EVAL-IN-LEXENV (A B C) #<NULL-LEXENV>)
+30: (EVAL (A B C))
+31: (SWANK::EVAL-REGION "(a . (b . (c . nil)))")
+32: ((LAMBDA NIL :IN SWANK-REPL::REPL-EVAL))
+33: (SWANK-REPL::TRACK-PACKAGE #<FUNCTION (LAMBDA NIL :IN SWANK-REPL::REPL-EVAL) {252DA2ED}>)
+34: (SWANK::CALL-WITH-RETRY-RESTART "Retry SLIME REPL evaluation request." #<FUNCTION (LAMBDA NIL :IN SWANK-REPL::REPL-EVAL) {252DA2BD}>)
+35: (SWANK::CALL-WITH-BUFFER-SYNTAX NIL #<FUNCTION (LAMBDA NIL :IN SWANK-REPL::REPL-EVAL) {252DA2AD}>)
+36: (SWANK-REPL::REPL-EVAL "(a . (b . (c . nil)))")
+37: (SB-INT:SIMPLE-EVAL-IN-LEXENV (SWANK-REPL:LISTENER-EVAL "(a . (b . (c . nil)))") #<NULL-LEXENV>)
+38: (EVAL (SWANK-REPL:LISTENER-EVAL "(a . (b . (c . nil)))"))
+39: (SWANK:EVAL-FOR-EMACS (SWANK-REPL:LISTENER-EVAL "(a . (b . (c . nil)))") SWANK-IO-PACKAGE::COMMON-LISP-USER 1875)
+40: (SWANK::SLDB-LOOP 5)
+41: ((FLET SWANK/BACKEND:CALL-WITH-DEBUGGING-ENVIRONMENT :IN "c:/Users/grw40/.vscode/extensions/rheller.alive-0.2.6/out/slime/2.26.1/slime-slime-15cf060/swank/sbcl.lisp") #<FUNCTION (LAMBDA NIL :IN SWANK::DEBUG-IN-EMACS) {25E14AE5}>)
+42: (SWANK::DEBUG-IN-EMACS #<UNBOUND-VARIABLE B {247A05C9}>)
+43: (SWANK:INVOKE-SLIME-DEBUGGER #<UNBOUND-VARIABLE B {247A05C9}>)
+44: (SWANK/SBCL::CALL-WITH-BREAK-HOOK #<FUNCTION SWANK:SWANK-DEBUGGER-HOOK> #<FUNCTION (LAMBDA NIL :IN SWANK:SWANK-DEBUGGER-HOOK) {247A060D}>)
+45: ((FLET SWANK/BACKEND:CALL-WITH-DEBUGGER-HOOK :IN "c:/Users/grw40/.vscode/extensions/rheller.alive-0.2.6/out/slime/2.26.1/slime-slime-15cf060/swank/sbcl.lisp") #<FUNCTION SWANK:SWANK-DEBUGGER-HOOK> #<FUNCTION (LAMBDA NIL :IN SWANK:SWANK-DEBUGGER-HOOK) {247A060D}>)
+46: (SWANK:SWANK-DEBUGGER-HOOK #<UNBOUND-VARIABLE B {247A05C9}> #<unused argument>)
+47: (SB-DEBUG::RUN-HOOK *DEBUGGER-HOOK* #<UNBOUND-VARIABLE B {247A05C9}>)
+48: (INVOKE-DEBUGGER #<UNBOUND-VARIABLE B {247A05C9}>)
+49: (ERROR #<UNBOUND-VARIABLE B {247A05C9}>)
+50: ("UNBOUND-SYMBOL-ERROR" B)
+51: (SB-KERNEL:INTERNAL-ERROR #.(SB-SYS:INT-SAP #X0666C3A0) #<unused argument>)
+52: ("foreign function: #x42BE6D")
+53: ("foreign function: #x40417D")
+54: ("foreign function: #x40BBBB")
+55: ("foreign function: #x41B7FA")
+56: ("foreign function: #x42BF28")
+57: (SB-INT:SIMPLE-EVAL-IN-LEXENV B #<NULL-LEXENV>)
+58: (SB-INT:SIMPLE-EVAL-IN-LEXENV (A B C) #<NULL-LEXENV>)
+59: (EVAL (A B C))
+60: (SWANK::EVAL-REGION "(a . (b . (c . nil)))")
+61: ((LAMBDA NIL :IN SWANK-REPL::REPL-EVAL))
+62: (SWANK-REPL::TRACK-PACKAGE #<FUNCTION (LAMBDA NIL :IN SWANK-REPL::REPL-EVAL) {247A00CD}>)
+63: (SWANK::CALL-WITH-RETRY-RESTART "Retry SLIME REPL evaluation request." #<FUNCTION (LAMBDA NIL :IN SWANK-REPL::REPL-EVAL) {247A009D}>)
+64: (SWANK::CALL-WITH-BUFFER-SYNTAX NIL #<FUNCTION (LAMBDA NIL :IN SWANK-REPL::REPL-EVAL) {247A008D}>)
+65: (SWANK-REPL::REPL-EVAL "(a . (b . (c . nil)))")
+66: (SB-INT:SIMPLE-EVAL-IN-LEXENV (SWANK-REPL:LISTENER-EVAL "(a . (b . (c . nil)))") #<NULL-LEXENV>)
+67: (EVAL (SWANK-REPL:LISTENER-EVAL "(a . (b . (c . nil)))"))
+68: (SWANK:EVAL-FOR-EMACS (SWANK-REPL:LISTENER-EVAL "(a . (b . (c . nil)))") SWANK-IO-PACKAGE::CL-USER 1873)
+69: (SWANK::SLDB-LOOP 4)
+70: ((FLET SWANK/BACKEND:CALL-WITH-DEBUGGING-ENVIRONMENT :IN "c:/Users/grw40/.vscode/extensions/rheller.alive-0.2.6/out/slime/2.26.1/slime-slime-15cf060/swank/sbcl.lisp") #<FUNCTION (LAMBDA NIL :IN SWANK::DEBUG-IN-EMACS) {25E14AE5}>)
+71: (SWANK::DEBUG-IN-EMACS #<TYPE-ERROR expected-type: LIST datum: B>)
+72: (SWANK:INVOKE-SLIME-DEBUGGER #<TYPE-ERROR expected-type: LIST datum: B>)
+73: (SWANK/SBCL::CALL-WITH-BREAK-HOOK #<FUNCTION SWANK:SWANK-DEBUGGER-HOOK> #<FUNCTION (LAMBDA NIL :IN SWANK:SWANK-DEBUGGER-HOOK) {24B7DB25}>)
+74: ((FLET SWANK/BACKEND:CALL-WITH-DEBUGGER-HOOK :IN "c:/Users/grw40/.vscode/extensions/rheller.alive-0.2.6/out/slime/2.26.1/slime-slime-15cf060/swank/sbcl.lisp") #<FUNCTION SWANK:SWANK-DEBUGGER-HOOK> #<FUNCTION (LAMBDA NIL :IN SWANK:SWANK-DEBUGGER-HOOK) {24B7DB25}>)
+75: (SWANK:SWANK-DEBUGGER-HOOK #<TYPE-ERROR expected-type: LIST datum: B> #<unused argument>)
+76: (SB-DEBUG::RUN-HOOK *DEBUGGER-HOOK* #<TYPE-ERROR expected-type: LIST datum: B>)
+77: (INVOKE-DEBUGGER #<TYPE-ERROR expected-type: LIST datum: B>)
+78: (ERROR TYPE-ERROR :DATUM B :EXPECTED-TYPE LIST :CONTEXT NIL)
+79: (SB-KERNEL:INTERNAL-ERROR #.(SB-SYS:INT-SAP #X0666D0D0) #<unused argument>)
+80: ("foreign function: #x42BE6D")
+81: ("foreign function: #x40417D")
+82: ("foreign function: #x40BBBB")
+83: ("foreign function: #x41B7FA")
+84: ("foreign function: #x42BF28")
+85: (SB-INT:SIMPLE-EVAL-IN-LEXENV (A . B) #<NULL-LEXENV>)
+86: (EVAL (A . B))
+87: (SWANK::EVAL-REGION "(a . b)")
+88: ((LAMBDA NIL :IN SWANK-REPL::REPL-EVAL))
+89: (SWANK-REPL::TRACK-PACKAGE #<FUNCTION (LAMBDA NIL :IN SWANK-REPL::REPL-EVAL) {24B7D605}>)
+90: (SWANK::CALL-WITH-RETRY-RESTART "Retry SLIME REPL evaluation request." #<FUNCTION (LAMBDA NIL :IN SWANK-REPL::REPL-EVAL) {24B7D5D5}>)
+91: (SWANK::CALL-WITH-BUFFER-SYNTAX NIL #<FUNCTION (LAMBDA NIL :IN SWANK-REPL::REPL-EVAL) {24B7D5C5}>)
+92: (SWANK-REPL::REPL-EVAL "(a . b)")
+93: (SB-INT:SIMPLE-EVAL-IN-LEXENV (SWANK-REPL:LISTENER-EVAL "(a . b)") #<NULL-LEXENV>)
+94: (EVAL (SWANK-REPL:LISTENER-EVAL "(a . b)"))
+95: (SWANK:EVAL-FOR-EMACS (SWANK-REPL:LISTENER-EVAL "(a . b)") SWANK-IO-PACKAGE::CL-USER 1276)
+96: (SWANK::SLDB-LOOP 3)
+97: ((FLET SWANK/BACKEND:CALL-WITH-DEBUGGING-ENVIRONMENT :IN "c:/Users/grw40/.vscode/extensions/rheller.alive-0.2.6/out/slime/2.26.1/slime-slime-15cf060/swank/sbcl.lisp") #<FUNCTION (LAMBDA NIL :IN SWANK::DEBUG-IN-EMACS) {25E14AE5}>)
+98: (SWANK::DEBUG-IN-EMACS #<TYPE-ERROR expected-type: LIST datum: B>)
+99: (SWANK:INVOKE-SLIME-DEBUGGER #<TYPE-ERROR expected-type: LIST datum: B>)
+
+CL-USER> 
+(setf arr (make-array '(2 3) :initial-element nil))
+; in: SETF ARR
+;     (SETF ARR (MAKE-ARRAY '(2 3) :INITIAL-ELEMENT NIL))
+; 
+; caught WARNING:
+;   undefined variable: COMMON-LISP-USER::ARR
+; 
+; compilation unit finished
+;   Undefined variable:
+;     ARR
+;   caught 1 WARNING condition
+
+#2A((NIL NIL NIL) (NIL NIL NIL))
+
+CL-USER> 
